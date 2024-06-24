@@ -2,7 +2,7 @@ ui <- {
 
   fluidPage(
     tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+      tags$link(rel = "stylesheet", type = "text/css", href = "style_1.css"),
       tags$script(src = "scripts.js"),
       tags$link(rel = "stylesheet", href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"),
       tags$script(
@@ -33,7 +33,7 @@ ui <- {
         "Home",
         `data-toggle` = "tooltip",
         `data-placement` = "bottom",
-        title = "Go to Home Page",style = "font-size: 30px;",
+        title = "Go to Home Page",style = "font-size: 22px; font-family: 'Helvetica'",
       ),
 
       icon = icon('home', lib = 'font-awesome'),
@@ -70,21 +70,21 @@ ui <- {
       div(
         p('In recent years, the next-generation lineage tracing has involved cellular barcoding that uses a large number of synthetic DNA sequences to uniquely label cells, providing quantitative insights into stem cell dynamics and cell fate outcomes. This strategy can be achieved using various barcode types, including integration of exogenous random DNA sequences into the cell genome, recombination of endogenous DNA units, or genome editing-mediated DNA insertions and deletions (INDEL). Cellular barcoding allows researchers to distinguish individual cells based on specific DNA barcode sequences at clonal resolution. Combining cellular barcoding with single-cell genomics, also known as single-cell lineage tracing (scLT), has generated rich datasets that resolve cell fate and transcriptional or epigenetic state of each cell.',class = 'responsive-text'),
         br(),
-        div(img(src = "intro1.png",style = "width: 70%;"),class = 'main_figure')
+        div(img(src = "intro1.png",style = "width: 75%;"),class = 'main_figure')
       ) ,
       br(),
       br(),
       div(h1('Statistics',class = 'custom-h1'),
           br(),
           div(class = 'main_figure',
-          img(src = "statistics.png", style = "width: 70%; "))
+          img(src = "statistics.png", style = "width: 75%; "))
           ),
       br(),
       br(),
       div(
         class = 'contact_text',
         p("Contact:",class = "Contact_bold"),
-        p("School of Life science, Westlake University",class = "Contact_bold"),
+        p("School of Life Sciences, Westlake University",class = "Contact_bold"),
         p("Weike Pei (correspondence): peiweike@westlake.edu.cn",class = "Contact_bold"),
         p("Junyao Jiang (maintainer): jiangjunyao@westlake.edu.cn",class = "Contact_bold"),
         p("Xing Ye (maintainer): yexing@mail.ustc.edu.cn",class = "Contact_bold")
@@ -93,7 +93,7 @@ ui <- {
 
     ),
 # 建立search页面 ----
-tabPanel( title = tags$span( "Search", `data-toggle` = "tooltip",style = "font-size: 30px;", `data-placement` = "bottom", title = "Go to Search Page"),
+tabPanel( title = tags$span( "Search", `data-toggle` = "tooltip",style = "font-size: 22px; font-family: 'Helvetica'", `data-placement` = "bottom", title = "Go to Search Page"),
           icon = icon('search',lib = 'font-awesome'),
           value = 'Search',
 
@@ -105,23 +105,21 @@ tabPanel( title = tags$span( "Search", `data-toggle` = "tooltip",style = "font-s
 
          fluidRow(
              column(2, offset = 1,
-                     pickerInput("species", "Species", choices = unique(coretable$Species), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, selectedTextFormat = "count > 3" ) ) ),
+                     pickerInput("species", "Species", choices = unique(coretable$Species), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, selectedTextFormat = "count > 3" ,style = "font-size: 22px; font-family: 'Helvetica'") ) ),
              column(2,
-                    pickerInput("tissue", "Tissue source", choices = unique(coretable$`Tissue source`), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, selectedTextFormat = "count > 3" ) ) ),
+                    pickerInput("tissue", "Tissue source", choices = unique(coretable$`Tissue source`), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, selectedTextFormat = "count > 3" ,style = "font-size: 22px; font-family: 'Helvetica'") ) ),
              column(2,
-                   pickerInput("technology", "Technology", choices = unique(coretable$Technology), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, selectedTextFormat = "count > 3" ) ) ),
+                   pickerInput("technology", "Technology", choices = unique(coretable$Technology), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE, selectedTextFormat = "count > 3" ,style = "font-size: 22px; font-family: 'Helvetica'") ) ),
              column(2,
-                    pickerInput("modality", "Modality", choices = unique(coretable$Modality), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE,selectedTextFormat = "count > 3" ) ) ),
-             column(2,
-                    pickerInput("barcodetype", "Barcode type", choices = unique(coretable$`Barcode type`), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE,selectedTextFormat = "count > 3" ) ) ) ),
+                    pickerInput("barcodetype", "Barcode type", choices = unique(coretable$`Barcode type`), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE,selectedTextFormat = "count > 3" ,style = "font-size: 22px; font-family: 'Helvetica'") ) ) ),
          fluidRow( column(12, div(DT::dataTableOutput('coretable123', width = "100%" ) ) ) ),
-         fluidRow( column(12, div(actionButton("go_to_panel", "Explore dataset",class = 'jump') ) ) ) ,
+         fluidRow( column(12, div(actionButton("go_to_panel", "Select dataset",class = 'jump') ) ) ) ,
          br(),
          br(),
          div(
            class = 'contact_text',
            p("Contact:",class = "Contact_bold"),
-           p("School of Life science, Westlake University",class = "Contact_bold"),
+           p("School of Life Sciences, Westlake University",class = "Contact_bold"),
            p("Weike Pei (correspondence): peiweike@westlake.edu.cn",class = "Contact_bold"),
            p("Junyao Jiang (maintainer): jiangjunyao@westlake.edu.cn",class = "Contact_bold"),
            p("Xing Ye (maintainer): yexing@mail.ustc.edu.cn",class = "Contact_bold")
@@ -131,7 +129,7 @@ tabPanel( title = tags$span( "Search", `data-toggle` = "tooltip",style = "font-s
 
 # 建立Results页面----
 tabPanel(
-  title = tags$span( "Results", `data-toggle` = "tooltip",style = "font-size: 30px;", `data-placement` = "bottom", title = "Go to Results Page"),
+  title = tags$span( "Results", `data-toggle` = "tooltip",style = "font-size: 22px; font-family: 'Helvetica'", `data-placement` = "bottom", title = "Go to Results Page"),
          icon = icon('chart-line', lib = 'font-awesome'),
          value = 'Results',
 
@@ -155,7 +153,11 @@ tabPanel(
              tabItems(
                tabItem(tabName = "embedding",
                   fluidRow(
-                    div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                    div(h3('Here is the single-cell module of scLTdb, which offers a range of functions to visualize and re-analyze scRNA-seq (Spatial Transcriptome,scATAC-seq,scMethy-seq) data modalities within scLT datasets:'),
+                        h3('1.Cell annotation (Pseudotime) embedding: visualize cell type (state) annotaion and pseudotime.'),
+                        h3('2.Clone embedding: visualize a set of clones or single clone on single cell embedding.'),
+                        h3('3.Cell type (state) number barplot: Visualize cell type (state) number and fraction.'),
+                        h3('4.Gene expression: Plot the gene of interest on the embedding plot. Please note that this function does not work for scATAC-seq and scMethy-seq datasets.'),
                         style = 'margin-left:10px;'),
                     br(),
                     div(tableOutput("sampleInfo"
@@ -191,7 +193,7 @@ tabPanel(
 
 
                     column(6,
-                           div( class="container-subtitle", style = "margin-top: 10px;", "Gene expression module" ),
+                           div( class="container-subtitle", style = "margin-top: 10px;", "Gene expression" ),
                            div( textInput("gene_expression", "Enter gene name", "ExampleGene"), actionButton("submit", "Submit")  ),
                            div( uiOutput("dynamic_plot_gene") ) )
 
@@ -201,11 +203,14 @@ tabPanel(
 
                     ) ),
                tabItem(tabName = "heatmap",
-                       div(h3('The lineage tracing module of the scLTdb offers an interactive interface that allows users to explore the lineage tracing modality of the scLT datasets.'),
+                       div(h3('Here is the lineage tracing module of scLTdb, which offers a range of functions to visualize and re-analyze lineage tracing (clone) data modalities within scLT datasets:'),
+                           h3('This page offers two functions:'),
+                           h3('1. Fate outcome: analyze and visualize fate outcomes among different cell types (states). Users can adjust the column order in the heatmap by rolling the bars on the left of the heatmap.'),
+                           h3('2. Lineage relationship: Analyze and visualize the similarity between cell types (states) by calculating the Spearman correlation using barcode count. Users can selecte cell types of interested to calculate the lineage relationships by clicking "Select cell type (state)".'),
                            style = 'margin-left:10px;'),
                        br(),
-                       fluidRow(style = "height: 100vh;",
-                         splitLayout( cellWidths = c("14%", "43%","43%"),
+                       fluidRow(style = "height: 70vh;",
+                         splitLayout( cellWidths = c("40%", "60%"),
                          div( style='width:100%;height:100%',
                         div( style='width:100%;height:100%',
                           div(style = "font-size: clamp(10px, 1.4vw, 25px); text-align: center;","Custom Cell Name Sorting"),
@@ -216,19 +221,26 @@ tabPanel(
                         div( class="container-subtitle", "Fate outcome"),
                         div(style="display: flex; justify-content: flex-start; width: 100% ",
                             pickerInput("change_normalize_method", label = 'Normalize method:', choices = c('ratio','log'), selected = 'ratio', width = '40%') ),
-                        div(plotlyOutput("celltype_clone_heatmap" ,height= "30.5vw",width= "100%" ) )  ),
+                        div(plotlyOutput("celltype_clone_heatmap" ,height= "30.5vw",width= "100%" ) ) )
+                         )),
 
+                       fluidRow(
                          div(
-                        div( class="container-subtitle", "Lineage relationship"),
+                        div( class="container-subtitle", "Lineage relationship",style='width:70%'),
                         div(style="display: flex; justify-content: flex-start; width: 100% ",
                             uiOutput("lineage_celltype_sort") ),
-                        div(plotlyOutput("lineage_relationship_heatmap" ,height  = "30.5vw",width= "100%" ) ) ) ) ) ),
-
+                        div(plotlyOutput("lineage_relationship_heatmap" ,height  = "30.5vw",width= "70%" ) ) )
+                      )),
                tabItem(tabName = "barcode",
-                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                       div(h3('Here is the lineage tracing module of scLTdb, which offers a range of functions to visualize and re-analyze lineage tracing (clone) data modalities within scLT datasets.'),
+                           h3('This page offers four functions:'),
+                           h3('1. Unique barcode number in each cell type: bar plot to show unique barcode number in each cell type (state)'),
+                           h3('2. Number of cell with barcode in each cell type: bar plot to show number of cell with barcode in each cell type (state)'),
+                           h3('3. Clone size statistics: bar plot to show the clone size (cell counts) of a set of clones or single clone'),
+                           h3('4. Fate bias summary: visualize clone fate bias in specific cell type (state). In single-cell lineage tracing data analysis, clone fate bias refers to the phenomenon where a particular clone or cell lineage shows a propensity to differentiate into specific cell types or states.'),
                            style = 'margin-left:10px;'),
                        br(),
-                       fluidRow( style = "height: 100vh;",
+                       fluidRow( style = "height: 60vh;",
                          column(6,
                                 div( class="container-subtitle", style = "margin-top: 10px;", "Unique barcode number in each cell type" ),
                                 div( girafeOutput("barplot_barcode_1", width = "100%",height= "100%") ) ),
@@ -283,7 +295,11 @@ tabPanel(
 
                                         div( girafeOutput(outputId = "girafe_output_celltype_fates", width = "100%", height = "100%")  ) ) ) ),
                tabItem(tabName = "deg",
-                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                       div(h3('Here is the integration module of scLTdb. This module offers the integrative analysis of scRNA-seq (scATAC-seq) and lineage tracing data.'),
+                           h3('This page offers two functions:'),
+                           h3('1. Fate bias DEGs: These are the set of DEGs found in two distinct cell groups that display contrasting fate biases within a specific cell type (state). To utilize this feature, users are required to first choose a specific cell type (state) and then select a particular fate bias associated with that cell type (state). The outcome of this analysis reveals the extent of transcriptome heterogeneity (DEGs) between the selected cell type (state) with two different fate biases.'),
+                           h3('2. Enrichment analysis (gene ontology) for fate bias DEGs.'),
+                           h3('Attention! If this dataset have no significant fate bias DEGs, the scLTdb will display the message "No significant DEGs in this datasets". If fate bias DEGs are unable to enrich for any functions in the gene ontology, the scLTdb will display the message "No significant functions in this datasets"'),
                            style = 'margin-left:10px;'),
                        br(),
                        fluidRow( style = "height: 1200px;",
@@ -294,7 +310,11 @@ tabPanel(
                          column(6,uiOutput("imageOutputOrPreset_3")),
                          column(6,uiOutput("imageOutputOrPreset_4"))) ),
                tabItem(tabName = "deg_size",
-                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                       div(h3('Here is the integration module of scLTdb. This module offers the integrative analysis of scRNA-seq (scATAC-seq) and lineage tracing data.'),
+                           h3('This page offers two functions:'),
+                           h3('1. Clone DEGs: DEGs among different clones in specific cell type (state). To utilize this feature, users are required to first choose a specific cell type (state) and then select two clones in this cell type (state).'),
+                           h3('2. Enrichment analysis (gene ontology) for clone DEGs.'),
+                           h3('Attention! If this dataset have no significant clone DEGs, the scLTdb will display the message "No significant DEGs in this datasets". If clone DEGs are unable to enrich for any functions in the gene ontology, the scLTdb will display the message "No significant functions in this datasets"'),
                            style = 'margin-left:10px;'),
                        br(),
                        fluidRow( style = "height: 800px;",
@@ -305,14 +325,16 @@ tabPanel(
                                  column(6,uiOutput("imageOutputOrPreset_size_3")),
                                  column(6,uiOutput("imageOutputOrPreset_size_4"))) ),
                tabItem(tabName = "gene_violin",
-                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                       div(h3('Here is the integration module of scLTdb. This module offers the integrative analysis of scRNA-seq (scATAC-seq) and lineage tracing data.'),
+                           h3('This page offers a violin plot to visualize gene expression among different fate biases in a specific cell type. To use this function, users are required to first choose a specific cell type (state) and then enter the gene name in the input box.'),
+                           h3('Please note that this function only supports datasets containing the transcriptome modality.'),
                            style = 'margin-left:10px;'),
                        br(),
                        fluidRow( style = "height: 100vh;",
                                  column(12,
                                         div(    pickerInput(
                                           inputId = "select_A_celltype_gene_violin",
-                                          label = 'Select cell type',
+                                          label = 'Select cell type (state)',
                                           choices = NULL,
                                           multiple = FALSE,
                                           options = pickerOptions(
@@ -332,7 +354,7 @@ tabPanel(
   div(
     class = 'contact_text',
     p("Contact:",class = "Contact_bold"),
-    p("School of Life science, Westlake University",class = "Contact_bold"),
+    p("School of Life Sciences, Westlake University",class = "Contact_bold"),
     p("Weike Pei (correspondence): peiweike@westlake.edu.cn",class = "Contact_bold"),
     p("Junyao Jiang (maintainer): jiangjunyao@westlake.edu.cn",class = "Contact_bold"),
     p("Xing Ye (maintainer): yexing@mail.ustc.edu.cn",class = "Contact_bold")
@@ -341,7 +363,7 @@ tabPanel(
 #----
 
 # 建立Download页面 ----
-tabPanel( title = tags$span( "Download", `data-toggle` = "tooltip",style = "font-size: 30px;", `data-placement` = "bottom", title = "Go to Download Page"),
+tabPanel( title = tags$span( "Download", `data-toggle` = "tooltip",style = "font-size: 22px; font-family: 'Helvetica'", `data-placement` = "bottom", title = "Go to Download Page"),
           icon = icon('download',lib = 'font-awesome'),
           value = 'Download',
 
@@ -373,7 +395,7 @@ tabPanel( title = tags$span( "Download", `data-toggle` = "tooltip",style = "font
           div(
             class = 'contact_text',
             p("Contact:",class = "Contact_bold"),
-            p("School of Life science, Westlake University",class = "Contact_bold"),
+            p("School of Life Sciences, Westlake University",class = "Contact_bold"),
             p("Weike Pei (correspondence): peiweike@westlake.edu.cn",class = "Contact_bold"),
             p("Junyao Jiang (maintainer): jiangjunyao@westlake.edu.cn",class = "Contact_bold"),
             p("Xing Ye (maintainer): yexing@mail.ustc.edu.cn",class = "Contact_bold")
@@ -383,13 +405,13 @@ tabPanel( title = tags$span( "Download", `data-toggle` = "tooltip",style = "font
 
 
 
-tabPanel( title = tags$span( "Online tool", `data-toggle` = "tooltip", `data-placement` = "bottom",style = "font-size: 30px;", title = "Go to Online tool Page"),
+tabPanel( title = tags$span( "Online tool", `data-toggle` = "tooltip", `data-placement` = "bottom",style = "font-size: 22px; font-family: 'Helvetica', sans-serif;", title = "Go to Online tool Page"),
           icon = icon('tools',lib = 'font-awesome'),
           value = 'online_tool',
           fluidRow(
             column(4,div(
               div( class="container-subtitle", "Clone analysis tool" ),
-             div( style = "font-family: 'Times New Roman', Times, serif;  font-size: clamp(10px, 1.5vw, 26px);",
+             div( style = "font-family: 'Helvetica', sans-serif;  font-size: clamp(10px, 1.5vw, 22px);",
              HTML("Welcome to the online tool of scLTdb to analyze bulk or single cell lineage tracing data.<br><br>
            You can click the Upload button at the right panel to start analysis. This online tool offers three functions: <br>
            (1) Fate Outcome function: this function is employed to analyze the distribution of clones across various cell types (samples). <br>
@@ -401,11 +423,11 @@ tabPanel( title = tags$span( "Online tool", `data-toggle` = "tooltip", `data-pla
             column(8,div( style = 'height:100vh',
               navbarPage(
                 title=div(
-                  style = 'display: flex; align-items: center; margin-top: 1px; width: 300px;',
-                  div( uiOutput("fileInputRender"), style = 'margin-top: -5px;'),
-                  div( actionButton("resetButton", "Clear"), style = 'margin-top: -45px;') ),
+                  style = "display: flex; align-items: center; margin-top: 1px; width: 300px; font-size: 22px; font-family: 'Helvetica', sans-serif;",
+                  div( uiOutput("fileInputRender"), style = "margin-top: -5px; font-size: 22px; font-family: 'Helvetica', sans-serif;"),
+                  div( actionButton("resetButton", "Clear"), style = "margin-top: -45px; font-size: 22px; font-family: 'Helvetica', sans-serif;") ),
 
-                tabPanel(title = span("Fate outcome function",style = "font-size: 16px;"),
+                tabPanel(title = span("Fate outcome function",style = "font-size: 16px; font-family: 'Helvetica', sans-serif;"),
                          value = 'fate_outcome_module',
                          div( style = "display: flex; justify-content: space-around; align-items: center; width: 100%;",
                            # div(style="position: relative; width: 20%; height: 100%;",
@@ -413,7 +435,7 @@ tabPanel( title = tags$span( "Online tool", `data-toggle` = "tooltip", `data-pla
                            div(style="position: relative; width: 100%; height: 100%;",
                              plotlyOutput('cloneprofile_tools', width = "100%", height = "45vw")) ) ),
 
-                tabPanel(title = span("Lineage relationship",style = "font-size: 16px;"),
+                tabPanel(title = span("Lineage relationship",style = "font-size: 16px; font-family: 'Helvetica', sans-serif;"),
                          value = 'lineage_relationship_module',
                          div( style = "display: flex; justify-content: space-around; align-items: center; width: 100%;",
                               # div(style="position: relative; width: 20%; height: 100%;",
@@ -421,10 +443,10 @@ tabPanel( title = tags$span( "Online tool", `data-toggle` = "tooltip", `data-pla
                               div(style="position: relative; width: 100%; height: 100%;",
                                   plotlyOutput('cell_type_fate_similartiy_tools', width = "100%", height = "45vw")) ) ),
 
-                tabPanel(title = span("Clone fate bias",style = "font-size: 16px;"),
-                         value = 'clone_fate_bias',
-                         div( style = "position: relative;", uiOutput('fate_bias_summary_tools'),
-                         div( downloadButton("downloadData", "Download Data"), style = "position: absolute; bottom: -60px; right: 10px; z-index: 100;" ) ) )
+                # tabPanel(title = span("Clone fate bias",style = "font-size: 16px;"),
+                #          value = 'clone_fate_bias',
+                #          div( style = "position: relative;", uiOutput('fate_bias_summary_tools'),
+                #          div( downloadButton("downloadData", "Download Data"), style = "position: absolute; bottom: -60px; right: 10px; z-index: 100;" ) ) )
 
               )
 
@@ -441,7 +463,7 @@ tabPanel( title = tags$span( "Online tool", `data-toggle` = "tooltip", `data-pla
           div(
             class = 'contact_text',
             p("Contact:",class = "Contact_bold"),
-            p("School of Life science, Westlake University",class = "Contact_bold"),
+            p("School of Life Sciences, Westlake University",class = "Contact_bold"),
             p("Weike Pei (correspondence): peiweike@westlake.edu.cn",class = "Contact_bold"),
             p("Junyao Jiang (maintainer): jiangjunyao@westlake.edu.cn",class = "Contact_bold"),
             p("Xing Ye (maintainer): yexing@mail.ustc.edu.cn",class = "Contact_bold")
@@ -449,7 +471,7 @@ tabPanel( title = tags$span( "Online tool", `data-toggle` = "tooltip", `data-pla
           ),
 
 # 建立tutorial页面 ----
-tabPanel( title = tags$span( "Tutorial", `data-toggle` = "tooltip",style = "font-size: 30px;", `data-placement` = "bottom", title = "Go to Tutorial Page"),
+tabPanel( title = tags$span( "Tutorial", `data-toggle` = "tooltip",style = "font-size: 22px; font-family: 'Helvetica', sans-serif;", `data-placement` = "bottom", title = "Go to Tutorial Page"),
           icon = icon('book',lib = 'font-awesome'),
           value = 'Tutorial',
 
@@ -460,7 +482,7 @@ tabPanel( title = tags$span( "Tutorial", `data-toggle` = "tooltip",style = "font
           div(
             class = 'contact_text',
             p("Contact:",class = "Contact_bold"),
-            p("School of Life science, Westlake University",class = "Contact_bold"),
+            p("School of Life Sciences, Westlake University",class = "Contact_bold"),
             p("Weike Pei (correspondence): peiweike@westlake.edu.cn",class = "Contact_bold"),
             p("Junyao Jiang (maintainer): jiangjunyao@westlake.edu.cn",class = "Contact_bold"),
             p("Xing Ye (maintainer): yexing@mail.ustc.edu.cn",class = "Contact_bold")
