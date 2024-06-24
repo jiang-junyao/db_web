@@ -45,7 +45,7 @@ ui <- {
         div(
           br(),
           br(),
-          div(style = "background-color: white; padding: 16px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;",
+          div(style = "background-color: white; padding: 20px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;",
               class="responsive-text",
               p("scLTdb is a comprehensive single-cell lineage tracing database with multi-functional modules for the analysis of gene expression, fate outcomes, lineage relationships and potential regulators for cell fate determination. scLTdb includes 106 datasets including three species, 13 tissue sources, 2.7 million cells and 36 scLT technologies."),
               p("scLTdb provides:"),
@@ -70,14 +70,14 @@ ui <- {
       div(
         p('In recent years, the next-generation lineage tracing has involved cellular barcoding that uses a large number of synthetic DNA sequences to uniquely label cells, providing quantitative insights into stem cell dynamics and cell fate outcomes. This strategy can be achieved using various barcode types, including integration of exogenous random DNA sequences into the cell genome, recombination of endogenous DNA units, or genome editing-mediated DNA insertions and deletions (INDEL). Cellular barcoding allows researchers to distinguish individual cells based on specific DNA barcode sequences at clonal resolution. Combining cellular barcoding with single-cell genomics, also known as single-cell lineage tracing (scLT), has generated rich datasets that resolve cell fate and transcriptional or epigenetic state of each cell.',class = 'responsive-text'),
         br(),
-        div(img(src = "intro1.png",style = "width: 50%;"),class = 'main_figure')
+        div(img(src = "intro1.png",style = "width: 70%;"),class = 'main_figure')
       ) ,
       br(),
       br(),
       div(h1('Statistics',class = 'custom-h1'),
           br(),
           div(class = 'main_figure',
-          img(src = "statistics.png", style = "width: 80%; "))
+          img(src = "statistics.png", style = "width: 70%; "))
           ),
       br(),
       br(),
@@ -225,6 +225,9 @@ tabPanel(
                         div(plotlyOutput("lineage_relationship_heatmap" ,height  = "30.5vw",width= "100%" ) ) ) ) ) ),
 
                tabItem(tabName = "barcode",
+                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                           style = 'margin-left:10px;'),
+                       br(),
                        fluidRow( style = "height: 100vh;",
                          column(6,
                                 div( class="container-subtitle", style = "margin-top: 10px;", "Unique barcode number in each cell type" ),
@@ -280,6 +283,9 @@ tabPanel(
 
                                         div( girafeOutput(outputId = "girafe_output_celltype_fates", width = "100%", height = "100%")  ) ) ) ),
                tabItem(tabName = "deg",
+                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                           style = 'margin-left:10px;'),
+                       br(),
                        fluidRow( style = "height: 1200px;",
                                  column(6,
                                         uiOutput("imageOutputOrPreset")),
@@ -288,6 +294,9 @@ tabPanel(
                          column(6,uiOutput("imageOutputOrPreset_3")),
                          column(6,uiOutput("imageOutputOrPreset_4"))) ),
                tabItem(tabName = "deg_size",
+                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                           style = 'margin-left:10px;'),
+                       br(),
                        fluidRow( style = "height: 800px;",
                                  column(6,
                                         uiOutput("imageOutputOrPreset_size")),
@@ -296,6 +305,9 @@ tabPanel(
                                  column(6,uiOutput("imageOutputOrPreset_size_3")),
                                  column(6,uiOutput("imageOutputOrPreset_size_4"))) ),
                tabItem(tabName = "gene_violin",
+                       div(h3('The single cell module of scLTdb provides a interactive interface for users to browse the transcriptome modality of scLT dataset.'),
+                           style = 'margin-left:10px;'),
+                       br(),
                        fluidRow( style = "height: 100vh;",
                                  column(12,
                                         div(    pickerInput(
