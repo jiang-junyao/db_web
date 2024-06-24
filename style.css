@@ -17,6 +17,7 @@
 .navbar-header .navbar-brand {
   color: black !important;
   font-size: 30px !important;
+  font-weight: bold;
 }
 .navbar-nav > li {
         margin-right: 15px;
@@ -26,7 +27,7 @@
   font-weight: bold;
   color: black;
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
 }
 .Contact_bold {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
@@ -113,12 +114,12 @@
         border-radius: 5px;
         display: flex;
         align-items: center;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+        font-family: 'Helvetica', Helvetica, Arial, sans-serif !important;
 }
 
 .responsive-text {
-          font-size: clamp(13px, 1.3vw, 26px);
-          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+          font-size: 14px;
+          font-family: 'Helvetica', Helvetica, Arial, sans-serif !important;
 }
 .row-spacing {
         margin-bottom: 20px; /* 设置20像素的下边距 */
@@ -140,7 +141,7 @@
       }
 .slidetitle {
  font-family: 'Helvetica', Times, serif;
- font-size: clamp(10px, 1.6vw, 20px);
+ font-size: clamp(10px, 1.6vw, 16px);
 }
 
 #searchInput {

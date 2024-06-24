@@ -45,7 +45,7 @@ ui <- {
         div(
           br(),
           br(),
-          div(style = "background-color: white; padding: 20px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;",
+          div(style = "background-color: white; padding: 16px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;",
               class="responsive-text",
               p("scLTdb is a comprehensive single-cell lineage tracing database with multi-functional modules for the analysis of gene expression, fate outcomes, lineage relationships and potential regulators for cell fate determination. scLTdb includes 106 datasets including three species, 13 tissue sources, 2.7 million cells and 36 scLT technologies."),
               p("scLTdb provides:"),
@@ -53,8 +53,8 @@ ui <- {
               p("2. Re-analyze and viualize scLT datasets through three interactive modules, including single cell module, lineage tracing module, and integration module."),
               p("3. Download well-processed scLT datasets in h5ad and rds format."),
               p("4. Online tool to analyze single cell lineage tracing or bulk lineage tracing data."),
-              p("5. A step-by-step tutorial for users to play scLTdb. Users can access our tutorial by clicking the ", 
-                actionLink("tutorial_link", "Tutorial"), 
+              p("5. A step-by-step tutorial for users to play scLTdb. Users can access our tutorial by clicking the ",
+                actionLink("tutorial_link", "Tutorial"),
                 " button located in the navigation bar."),
               p("Please note that when you click on the 'Explore dataset' button on the Search page, it may take approximately 30 seconds to load the dataset. This delay is caused by the large number of cells in the dataset and the limitations of computational resources. In case you encounter any difficulty loading the dataset, kindly refresh the page."),
           ),
@@ -115,7 +115,18 @@ tabPanel( title = tags$span( "Search", `data-toggle` = "tooltip",style = "font-s
              column(2,
                     pickerInput("barcodetype", "Barcode type", choices = unique(coretable$`Barcode type`), multiple = TRUE, options = pickerOptions(actionsBox = TRUE, liveSearch = TRUE,selectedTextFormat = "count > 3" ) ) ) ),
          fluidRow( column(12, div(DT::dataTableOutput('coretable123', width = "100%" ) ) ) ),
-         fluidRow( column(12, div(actionButton("go_to_panel", "Explore dataset",class = 'jump') ) ) ) ),
+         fluidRow( column(12, div(actionButton("go_to_panel", "Explore dataset",class = 'jump') ) ) ) ,
+         br(),
+         br(),
+         div(
+           class = 'contact_text',
+           p("Contact:",class = "Contact_bold"),
+           p("School of Life science, Westlake University",class = "Contact_bold"),
+           p("Weike Pei (correspondence): peiweike@westlake.edu.cn",class = "Contact_bold"),
+           p("Junyao Jiang (maintainer): jiangjunyao@westlake.edu.cn",class = "Contact_bold"),
+           p("Xing Ye (maintainer): yexing@mail.ustc.edu.cn",class = "Contact_bold")
+         )
+         ),
 #----
 
 # 建立Results页面----
