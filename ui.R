@@ -2,7 +2,7 @@ ui <- {
 
   fluidPage(
     tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "style_1.css"),
+      tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
       tags$script(src = "scripts.js"),
       tags$link(rel = "stylesheet", href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"),
       tags$script(
@@ -22,7 +22,7 @@ ui <- {
 
 
   navbarPage(
-    title = 'scLTdb: single cell lineage tracing database (version1.0.0)',
+    title = 'scLTdb: single cell lineage tracing database',
     #div(img(src = "jianbian.png",height='46px',width = '620px'),class = 'logo'),
     id = "inTabset",
     bg = "white",
@@ -53,14 +53,16 @@ ui <- {
               p("2. Re-analyze and viualize scLT datasets through three interactive modules, including single cell module, lineage tracing module, and integration module."),
               p("3. Download well-processed scLT datasets in h5ad and rds format."),
               p("4. Online tool to analyze single cell lineage tracing or bulk lineage tracing data."),
-              p("5. A step-by-step tutorial for users to play scLTdb. Users can access our tutorial by clicking the 'Tutorial' button located in the navigation bar."),
+              p("5. A step-by-step tutorial for users to play scLTdb. Users can access our tutorial by clicking the ", 
+                actionLink("tutorial_link", "Tutorial"), 
+                " button located in the navigation bar."),
               p("Please note that when you click on the 'Explore dataset' button on the Search page, it may take approximately 30 seconds to load the dataset. This delay is caused by the large number of cells in the dataset and the limitations of computational resources. In case you encounter any difficulty loading the dataset, kindly refresh the page."),
           ),
 
 
         ),
         div(),
-        div(img(src = "overview.png", style = "width: 75%;"))
+        div(img(src = "overview.png", style = "width: 100%;"))
        ),
       br(),
       h1('Introduction to single cell lineage tracing',class = 'custom-h1'),

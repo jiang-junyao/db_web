@@ -146,7 +146,7 @@ server <- function(input, output,session = session) {
     
     observeEvent(input$go_to_panel, { updateNavbarPage(session, "inTabset", selected = 'Results') } ,ignoreInit = TRUE )
     
-    
+    observeEvent(input$tutorial_link, { updateNavbarPage(session, "inTabset", selected = "Tutorial")} ,ignoreInit = TRUE)
     
     #----    
     
@@ -296,7 +296,10 @@ server <- function(input, output,session = session) {
       data$pbmc <- pbmc_2
       clone_fate_bias = clone_fate_bias_list()
       
-      updateSelectInput(session, "selectPage", choices = 1:ceiling( length(unique(pbmc_1$celltype)) / 12), selected = 1)
+      num_pages <- ceiling(length(unique(pbmc_1$celltype)) / 12)
+      choices_page <- setNames(1:num_pages, paste0("legend page:", 1:num_pages))
+      
+      updateSelectInput(session, "selectPage", choices = choices_page, selected = 1)
       updatePickerInput(session, "select_A_barcode", choices = clone_fate_bias )
       updatePickerInput(session, "select_A_clone_size", choices = clone_fate_bias, selected = clone_fate_bias[[1]] )
       updatePickerInput(session, "select_A_fate_bias", choices = names(clone_fate_bias ))

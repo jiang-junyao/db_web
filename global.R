@@ -347,6 +347,16 @@ generatePseudotimeSvg <- function(dataset_name, metadata ) {
 
 # 绘制clone的函数----
 plot_clone_embedding2 <- function(barcode_use, pbmc){
+  if(length(barcode_use) > 5){
+    p <- ggplot() +
+      annotate("text", x = 1, y = 1, label = "The number of selected clones cannot exceed 5", size = 5) +
+      theme_void()
+     return(girafe(ggobj = p,options = list(
+       opts_sizing(rescale = TRUE),  # 允许图形随容器大小变化
+       opts_tooltip(offx = 0, offy = 0)
+     ) ))
+  }
+  
  # colors = c( rgb(205/255,205/255,205/255),rgb(42/255,122/255,155/255) )
  # getPalette = colorRampPalette( colors )
     all_type=c('Other cell',barcode_use)
@@ -358,6 +368,8 @@ plot_clone_embedding2 <- function(barcode_use, pbmc){
 
     coor = pbmc[, c('UMAP_1', 'UMAP_2', 'celltype', 'barcodes')]
     coor$barcode_type = barcode_anno
+    coor$barcode_type <- str_wrap(coor$barcode_type, width = 20)
+    all_type <- str_wrap(all_type, width = 20)
    # coor$tooltip = paste0("Cell name: ", rownames(coor), "\nCell type: ", coor$celltype , "\nCell barcode: ", coor$barcodes, "\nChoice: " , coor$barcode_type , "\nUMAP coordinates: ", coor$UMAP_1, ", ", coor$UMAP_2)
 
     coor1 = coor[coor$barcode_type == 'Other cell',]
@@ -372,7 +384,7 @@ plot_clone_embedding2 <- function(barcode_use, pbmc){
       coor2 <- coor2[sample(1:nrow(coor2), 20000), ] }
 
     if (nrow(coor1)>10000) { cell_size_1=0.15 }else{ cell_size_1=0.2 }
-    if (nrow(coor2)>10000) { cell_size_2=0.15 }else{ cell_size_2=0.2 }
+    if (nrow(coor2)>10000) { cell_size_2=0.25 }else{ cell_size_2=0.3 }
 
     if (length(all_type) <= 11) {
       palette_colors <- custom_colors[1:length(all_type)]
@@ -384,8 +396,9 @@ plot_clone_embedding2 <- function(barcode_use, pbmc){
       geom_point(data = coor2, aes(x = UMAP_1, y = UMAP_2, color = barcode_type ), size = cell_size_2   ) +
       theme_void() +
       scale_color_manual(values = palette_colors, breaks = all_type) +
-      #labs(color = "Clonal distribution")+
-      theme(legend.position = "none")
+      labs(color = "Clonal distribution")+
+      theme(legend.position = "right",
+            legend.key.height = unit(2, "lines"))
 
     #ggsave(filename = '/data/yexing/scLT/www/111aaa_plot_clone.pdf', plot = gg, device = "pdf", width = 8, height = 6, units = "in", dpi = 100, limitsize = FALSE)
 
@@ -480,6 +493,7 @@ plot_celltype_barplot <- function(pbmc) {
 
   # 将 ggplot2 图转换为 girafe 对象
   girafe(ggobj = p, options = list(
+    opts_selection(type = "none"),
     opts_hover(css = "stroke:black; stroke-width:2px;"),
     opts_hover_inv(css = "opacity:0.2;"),
     opts_sizing(rescale = TRUE)), width_svg = 8, height_svg = 6)
@@ -510,6 +524,7 @@ plot_celltype_piechart  <- function(pbmc) {
   #ggsave(filename = '/data/yexing/scLT/www/111aaa_plot_pieplot.pdf', plot = p, device = "pdf", width = 8, height = 6, units = "in", dpi = 100, limitsize = FALSE)
 
   girafe(ggobj = p, options = list(
+    opts_selection(type = "none"),
     opts_hover(css = "stroke:black; stroke-width:2px;"),
     opts_hover_inv(css = "opacity:0.2;"),
     opts_sizing(rescale = TRUE)), width_svg = 8, height_svg = 6)
@@ -550,6 +565,7 @@ plot_barplot_barcode_1 <- function(pbmc) {
 
   # 将 ggplot2 图转换为 girafe 对象
   girafe(ggobj = p, options = list(
+    opts_selection(type = "none"),
     opts_hover(css = "stroke:black; stroke-width:2px;"),
     opts_hover_inv(css = "opacity:0.2;"),
     opts_sizing(rescale = TRUE)), width_svg = 8, height_svg = 6)
@@ -588,6 +604,7 @@ plot_barplot_barcode_2 <- function(pbmc) {
 
   # 将 ggplot2 图转换为 girafe 对象
   girafe(ggobj = p, options = list(
+    opts_selection(type = "none"),
     opts_hover(css = "stroke:black; stroke-width:2px;"),
     opts_hover_inv(css = "opacity:0.2;"),
     opts_sizing(rescale = TRUE)), width_svg = 8, height_svg = 6)
@@ -813,6 +830,7 @@ celltype_sample_fraction <- function(dataset_name, rna, sample='celltype', fate_
   #ggsave(filename = '/data/yexing/scLT/www/celltype_sample_fraction_barplot.pdf', plot = gg, device = "pdf", width = 8, height = 6, units = "in", dpi = 100, limitsize = FALSE)
 
   p <- girafe(ggobj = gg, options = list(
+    opts_selection(type = "none"),
     opts_hover(css = "stroke:black; stroke-width:2px;"),
     opts_hover_inv(css = "opacity:0.2;"),
     opts_sizing(rescale = TRUE)),
@@ -836,6 +854,7 @@ celltype_sample_fraction <- function(dataset_name, rna, sample='celltype', fate_
   #ggsave(filename = '/data/yexing/scLT/www/celltype_sample_fraction_pieplot.pdf', plot = gg, device = "pdf", width = 8, height = 6, units = "in", dpi = 100, limitsize = FALSE)
 
   p <- girafe(ggobj = gg, options = list(
+    opts_selection(type = "none"),
     opts_hover(css = "stroke:black; stroke-width:2px;"),
     opts_hover_inv(css = "opacity:0.2;"),
     opts_sizing(rescale = TRUE)),
@@ -906,7 +925,7 @@ create_interactive_bar_plot <- function(data, barcodes_vector, clone_fate_bias) 
     }
 
   # 创建交互式图形
-  girafe_plot <- girafe(ggobj = p,options = list( opts_sizing(rescale = TRUE) ), width_svg = 12, height_svg = 10)
+  girafe_plot <- girafe(ggobj = p,options = list( opts_selection(type = "none"), opts_sizing(rescale = TRUE) ), width_svg = 12, height_svg = 10)
   return(girafe_plot) }else{return(NULL)} }
 
 create_interactive_bar_plot_2 <- function(data, dataset_name, fate_use, clone_fate_bias) {
@@ -958,7 +977,7 @@ create_interactive_bar_plot_2 <- function(data, dataset_name, fate_use, clone_fa
     #ggsave(filename = '/data/yexing/scLT/www/clone_size.pdf', plot = p, device = "pdf", width = 8, height = 6, units = "in", dpi = 100, limitsize = FALSE)
 
     # 创建交互式图形
-    girafe_plot <- girafe(ggobj = p,options = list( opts_sizing(rescale = TRUE) ), width_svg = 12, height_svg = 10)
+    girafe_plot <- girafe(ggobj = p,options = list( opts_selection(type = "none"), opts_sizing(rescale = TRUE) ), width_svg = 12, height_svg = 10)
     return(girafe_plot) }else{return(NULL)} }
 #----
 

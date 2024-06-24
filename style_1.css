@@ -82,8 +82,8 @@
   font-size: clamp(12px, 1.5vw, 20px);
 }
 .dataTables_wrapper .dataTable thead th {
-  background-color: #2C3E50;
-  color: #FFFFFF;
+  background-color: #FFCB98;
+  color: black;
   font-size: clamp(10px, 1.6vw, 20px);
 }
 
@@ -131,6 +131,7 @@
     margin-bottom: 8px;         /* 与内容间距略小 */
     font-size: clamp(10px, 1.5vw, 28px); /* 较小的字体大小 */
     border-radius: 5px;
+    text-align: center;
 }
 
 .wide-ui-output {
